@@ -2,9 +2,20 @@ const express = require('express');
 const app = express();
 const axios = require('axios');
 const Superhero = require('./Superhero');
+const path = require('path'); //---heroku---
+
+const port = process.env.PORT || 5000;
 
 const accesstoken = '10217870509586417'; //superhero api
 const apikey = 'f7467abc'; //movie api
+
+//--- heroku ---
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 //query to get hero when submitted
 app.get('/gethero', (req, res) =>{
@@ -93,6 +104,6 @@ app.get('/edithero', (req,res) =>{
   
 });
 
-app.listen(5000, () => {
-  console.log('server listening on port 5000');
+app.listen(port, () => {
+  console.log(`server listening on port ${port}`);
 });

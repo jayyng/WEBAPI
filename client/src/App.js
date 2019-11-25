@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-//import Modal from './components/Modal/Modal';
 import './App.css';
-//import Modal from './App.css';
 import axios from 'axios';
 import {
   Jumbotron,

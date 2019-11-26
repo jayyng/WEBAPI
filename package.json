@@ -6,6 +6,10 @@
   "engines": {
     "node": "12.13.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayyng/WEBAPI.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client-install": "npm install --prefix client",
@@ -13,10 +17,15 @@
     "server": "nodemon app.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": " npm install axios && npm install mongoose && npm install express && npm install concurrently && npm install nodemon && npm install --prefix client  && npm run build --prefix client "
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "Ter Jie",
   "license": "ISC",
+  
+  "devDependencies":{
+      "concurrently": "^4.0.1",
+      "nodemon": "1.19.4"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "concurrently": "^4.0.1",
